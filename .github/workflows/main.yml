@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест на предпринимательское мышление</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options label {
+            display: block;
+            margin: 10px 0;
+        }
+        .options input[type="radio"]:checked + span {
+            background-color: #ffb86c;
+            color: #fff;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .cta-button {
+            display: none;
+            background-color: #ff5722;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+        .cta-button:hover {
+            background-color: #e64a19;
+            transform: scale(1.05);
+        }
+        .animated {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        .alert {
+            display: none;
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .fireworks {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            font-size: 3em;
+            display: none;
+        }
+        #scoreDisplay {
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px;
+        }
+        .movie-recommendations {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .movie-recommendations ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Тест на предпринимательское мышление</h1>
+
+        <!-- Вопросы -->
+        <div class="question" id="question1">
+            <h3>Вопрос 1: Вы планируете открыть бизнес. Как начнете?</h3>
+            <div class="options">
+                <label><input type="radio" name="q1" value="5"><span>Проанализирую рынок и разработаю бизнес-план.</span></label>
+                <label><input type="radio" name="q1" value="10"><span>Сразу начну действовать, не дожидаясь анализа.</span></label>
+                <label><input type="radio" name="q1" value="7"><span>Поговорю с потенциальными клиентами и партнерами.</span></label>
+                <label><input type="radio" name="q1" value="2"><span>Открою бизнес, используя свои сбережения, без плана.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question2">
+            <h3>Вопрос 2: Вы хотите нанять новых сотрудников. Какие шаги предпримете?</h3>
+            <div class="options">
+                <label><input type="radio" name="q2" value="10"><span>Составлю четкое описание вакансий и проведу собеседования.</span></label>
+                <label><input type="radio" name="q2" value="7"><span>Опубликую вакансии на популярных платформах.</span></label>
+                <label><input type="radio" name="q2" value="5"><span>Обращусь к рекрутинговым агентствам для поиска кандидатов.</span></label>
+                <label><input type="radio" name="q2" value="2"><span>Найду сотрудников среди своих знакомых.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question3">
+            <h3>Вопрос 3: Ваша компания сталкивается с низкими продажами. Что предпримете?</h3>
+            <div class="options">
+                <label><input type="radio" name="q3" value="5"><span>Попробую увеличить рекламный бюджет.</span></label>
+                <label><input type="radio" name="q3" value="10"><span>Изменю стратегию продаж и проанализирую причины низких продаж.</span></label>
+                <label><input type="radio" name="q3" value="7"><span>Предложу скидки и акции для привлечения клиентов.</span></label>
+                <label><input type="radio" name="q3" value="2"><span>Ничего не буду менять, надеюсь, что ситуация изменится сама.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question4">
+            <h3>Вопрос 4: Как будете решать проблему нехватки финансирования?</h3>
+            <div class="options">
+                <label><input type="radio" name="q4" value="10"><span>Поиск инвесторов или кредиторов для привлечения средств.</span></label>
+                <label><input type="radio" name="q4" value="7"><span>Сокращу расходы и оптимизирую бизнес-процессы.</span></label>
+                <label><input type="radio" name="q4" value="5"><span>Попробую взять кредит в банке.</span></label>
+                <label><input type="radio" name="q4" value="2"><span>Закрою часть бизнеса, чтобы снизить финансовую нагрузку.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question5">
+            <h3>Вопрос 5: Если ваши сотрудники начинают активно искать другую работу, что будете делать?</h3>
+            <div class="options">
+                <label><input type="radio" name="q5" value="10"><span>Проведу встречу с командой, выясню причины и предложу улучшения.</span></label>
+                <label><input type="radio" name="q5" value="7"><span>Предложу бонусы и привилегии для удержания сотрудников.</span></label>
+                <label><input type="radio" name="q5" value="5"><span>Начну поиск новых сотрудников и заранее подготовлю замену.</span></label>
+                <label><input type="radio" name="q5" value="2"><span>Просто приму решение уволить тех, кто хочет уйти.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question6">
+            <h3>Вопрос 6: Вам предлагают партнерство с другой компанией. Какие шаги предпримете?</h3>
+            <div class="options">
+                <label><input type="radio" name="q6" value="5"><span>Изучу предложения и условия сотрудничества.</span></label>
+                <label><input type="radio" name="q6" value="7"><span>Проведу переговоры и оценю возможные выгоды.</span></label>
+                <label><input type="radio" name="q6" value="10"><span>Подробно проанализирую компанию-партнера и соглашусь при наличии выгоды.</span></label>
+                <label><input type="radio" name="q6" value="2"><span>Откажусь от предложения без дополнительного анализа.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question7">
+            <h3>Вопрос 7: Если в бизнесе возникают неожиданные проблемы, что сделаете?</h3>
+            <div class="options">
+                <label><input type="radio" name="q7" value="7"><span>Проанализирую проблему и постараюсь найти оптимальное решение.</span></label>
+                <label><input type="radio" name="q7" value="10"><span>Разработаю план по решению проблемы и минимизации рисков.</span></label>
+                <label><input type="radio" name="q7" value="5"><span>Обращусь за консультацией к экспертам или коллегам.</span></label>
+                <label><input type="radio" name="q7" value="2"><span>Постараюсь игнорировать проблему в надежде, что она решится сама.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question8">
+            <h3>Вопрос 8: Как будете действовать при нехватке клиентов?</h3>
+            <div class="options">
+                <label><input type="radio" name="q8" value="5"><span>Увеличу рекламные кампании и акции для привлечения клиентов.</span></label>
+                <label><input type="radio" name="q8" value="10"><span>Анализирую потребности рынка и адаптирую предложения под клиента.</span></label>
+                <label><input type="radio" name="q8" value="7"><span>Проведу исследования и постараюсь улучшить качество услуг.</span></label>
+                <label><input type="radio" name="q8" value="2"><span>Снижу цены, чтобы привлечь клиентов.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question9">
+            <h3>Вопрос 9: Как будете управлять временем, если проект сильно затягивается?</h3>
+            <div class="options">
+                <label><input type="radio" name="q9" value="5"><span>Перераспределю ресурсы и пересмотрю график.</span></label>
+                <label><input type="radio" name="q9" value="10"><span>Проведу анализ проблем и скорректирую план действий.</span></label>
+                <label><input type="radio" name="q9" value="7"><span>Проверю выполнение задач и пересмотрю приоритеты.</span></label>
+                <label><input type="radio" name="q9" value="2"><span>Буду действовать по старому плану, надеясь на лучшее.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question10">
+            <h3>Вопрос 10: Вы обнаружили, что часть ваших средств была украдена. Как поступите?</h3>
+            <div class="options">
+                <label><input type="radio" name="q10" value="7"><span>Проведу внутреннее расследование и укреплю безопасность.</span></label>
+                <label><input type="radio" name="q10" value="10"><span>Обращусь в правоохранительные органы и пересмотрю финансовые процессы.</span></label>
+                <label><input type="radio" name="q10" value="5"><span>Попробую договориться с виновными и улучшить контроль.</span></label>
+                <label><input type="radio" name="q10" value="2"><span>Игнорирую инцидент и надеюсь, что это больше не повторится.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question11">
+            <h3>Вопрос 11: Как будете реагировать на изменения в законодательстве, которые влияют на бизнес?</h3>
+            <div class="options">
+                <label><input type="radio" name="q11" value="10"><span>Изучу новые правила и адаптирую бизнес-процессы под новые требования.</span></label>
+                <label><input type="radio" name="q11" value="7"><span>Проконсультируюсь с юристами и внесу необходимые изменения.</span></label>
+                <label><input type="radio" name="q11" value="5"><span>Останусь в рамках старых норм и буду ждать дальнейших изменений.</span></label>
+                <label><input type="radio" name="q11" value="2"><span>Игнорирую изменения, если это не критично для бизнеса.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question12">
+            <h3>Вопрос 12: Что предпримете, если ваши конкуренты начали агрессивно рекламироваться?</h3>
+            <div class="options">
+                <label><input type="radio" name="q12" value="7"><span>Увеличу свои рекламные кампании и улучшу предложения.</span></label>
+                <label><input type="radio" name="q12" value="10"><span>Проанализирую конкурентов и скорректирую свою стратегию.</span></label>
+                <label><input type="radio" name="q12" value="5"><span>Сосредоточусь на улучшении продукта и клиентского сервиса.</span></label>
+                <label><input type="radio" name="q12" value="2"><span>Не буду предпринимать никаких действий.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question13">
+            <h3>Вопрос 13: Как вы будете решать проблему с дефицитом товаров на складе?</h3>
+            <div class="options">
+                <label><input type="radio" name="q13" value="7"><span>Увеличу заказы у поставщиков и оптимизирую логистику.</span></label>
+                <label><input type="radio" name="q13" value="10"><span>Проанализирую спрос и обновлю прогнозы для более точного планирования.</span></label>
+                <label><input type="radio" name="q13" value="5"><span>Проведу переговоры с поставщиками о срочных поставках.</span></label>
+                <label><input type="radio" name="q13" value="2"><span>Попробую найти альтернативные источники поставок без дополнительного анализа.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question14">
+            <h3>Вопрос 14: Как вы будете действовать, если замечаете снижение качества обслуживания клиентов?</h3>
+            <div class="options">
+                <label><input type="radio" name="q14" value="10"><span>Проведу обучение сотрудников и усовершенствую процессы обслуживания.</span></label>
+                <label><input type="radio" name="q14" value="7"><span>Обращусь за отзывами от клиентов и внесу необходимые улучшения.</span></label>
+                <label><input type="radio" name="q14" value="5"><span>Проведу внутренний аудит и предложу бонусы за лучшее обслуживание.</span></label>
+                <label><input type="radio" name="q14" value="2"><span>Постараюсь игнорировать проблему, надеясь, что она решится сама.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question15">
+            <h3>Вопрос 15: Вы получили предложение о франшизе. Как действовать?</h3>
+            <div class="options">
+                <label><input type="radio" name="q15" value="5"><span>Изучу предложение и оценю условия франшизы.</span></label>
+                <label><input type="radio" name="q15" value="7"><span>Проведу переговоры с франчайзером и проверю отзывы других франчайзи.</span></label>
+                <label><input type="radio" name="q15" value="10"><span>Оценю потенциал франшизы для моего бизнеса и приму решение о партнерстве.</span></label>
+                <label><input type="radio" name="q15" value="2"><span>Отклоню предложение без дополнительного анализа.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question16">
+            <h3>Вопрос 16: Как будете бороться с отсутствием инноваций в бизнесе?</h3>
+            <div class="options">
+                <label><input type="radio" name="q16" value="10"><span>Разработаю план внедрения новых технологий и идей.</span></label>
+                <label><input type="radio" name="q16" value="7"><span>Поиск новых партнеров и консультации с экспертами.</span></label>
+                <label><input type="radio" name="q16" value="5"><span>Соберу идеи от команды и попробую внедрить их в работу.</span></label>
+                <label><input type="radio" name="q16" value="2"><span>Буду продолжать действовать по старым методам.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question17">
+            <h3>Вопрос 17: Ваш проект требует дополнительных инвестиций. Как поступите?</h3>
+            <div class="options">
+                <label><input type="radio" name="q17" value="7"><span>Ищу инвесторов и предложу им участие в проекте.</span></label>
+                <label><input type="radio" name="q17" value="10"><span>Анализирую текущие расходы и оптимизирую их для привлечения инвестиций.</span></label>
+                <label><input type="radio" name="q17" value="5"><span>Попробую взять кредит в банке для получения необходимых средств.</span></label>
+                <label><input type="radio" name="q17" value="2"><span>Пытаюсь сократить проект до тех пор, пока не найду инвесторов.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question18">
+            <h3>Вопрос 18: Как вы будете привлекать клиентов в условиях жесткой конкуренции?</h3>
+            <div class="options">
+                <label><input type="radio" name="q18" value="5"><span>Увеличу рекламный бюджет и предложу скидки.</span></label>
+                <label><input type="radio" name="q18" value="10"><span>Проанализирую конкурентное окружение и предложу уникальные предложения.</span></label>
+                <label><input type="radio" name="q18" value="7"><span>Сосредоточусь на повышении качества обслуживания и лояльности клиентов.</span></label>
+                <label><input type="radio" name="q18" value="2"><span>Снижать цены до минимума для привлечения клиентов.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question19">
+            <h3>Вопрос 19: Как вы будете решать проблему с нехваткой квалифицированного персонала?</h3>
+            <div class="options">
+                <label><input type="radio" name="q19" value="7"><span>Организую обучение для сотрудников и привлеку квалифицированных специалистов.</span></label>
+                <label><input type="radio" name="q19" value="10"><span>Вложу ресурсы в программы по развитию сотрудников и рекрутинг.</span></label>
+                <label><input type="radio" name="q19" value="5"><span>Обращусь к рекрутинговым агентствам и размещу вакансии на популярных платформах.</span></label>
+                <label><input type="radio" name="q19" value="2"><span>Использую тех, кто доступен, и надеюсь на лучшее.</span></label>
+            </div>
+        </div>
+
+        <div class="question" id="question20">
+            <h3>Вопрос 20: Что сделаете, если столкнетесь с недовольством клиентов по поводу нового продукта?</h3>
+            <div class="options">
+                <label><input type="radio" name="q20" value="10"><span>Соберу отзывы и внесу изменения в продукт в соответствии с пожеланиями клиентов.</span></label>
+                <label><input type="radio" name="q20" value="7"><span>Проведу дополнительные исследования и улучшу продукт на основе полученных данных.</span></label>
+                <label><input type="radio" name="q20" value="5"><span>Попробую улучшить коммуникацию и проинформирую клиентов о преимуществах.</span></label>
+                <label><input type="radio" name="q20" value="2"><span>Игнорирую недовольства и продолжаю работу по старому плану.</span></label>
+            </div>
+        </div>
+
+        <div class="alert" id="alert">
+            Пожалуйста, ответьте на все вопросы перед отправкой теста.
+        </div>
+
+        <div class="button-container">
+            <button onclick="calculateResults()">Проверить результаты</button>
+        </div>
+
+        <div class="result" id="result">
+            <div id="congratulations" class="animated"></div>
+            <div id="scoreDisplay"></div>
+            <div class="fireworks" id="fireworks">
+                🎆🎇✨
+            </div>
+            <a href="https://forms.amocrm.ru/rtmlclc" class="cta-button animated">Перейдите и получите скидку 200 000 рублей на открытие нашего бизнеса</a>
+        </div>
+    </div>
+
+    <script>
+        function calculateResults() {
+            const totalQuestions = 20;
+            let score = 0;
+            let answeredAll = true;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selected = document.querySelector(`input[name=q${i}]:checked`);
+                if (selected) {
+                    score += parseInt(selected.value);
+                } else {
+                    answeredAll = false;
+                }
+            }
+
+            document.getElementById('alert').style.display = answeredAll ? 'none' : 'block';
+            document.getElementById('result').style.display = answeredAll ? 'block' : 'none';
+
+            if (answeredAll) {
+                const fireworks = document.getElementById('fireworks');
+                const scoreDisplay = document.getElementById('scoreDisplay');
+                scoreDisplay.innerText = `Вы набрали ${score} из 200 баллов`;
+
+                if (score >= 150) { // 60% of 200
+                    document.getElementById('congratulations').innerHTML = '<h2>Поздравляем! Вы показали крутой результат!</h2><p>Мы видим в вас нашего будущего партнера. Поэтому дарим вам скидку 200 000 рублей и ждем вас в рядах нашей команды!</p>';
+                    document.querySelector('.cta-button').style.display = 'block';
+                    fireworks.style.display = 'block';
+                    setTimeout(() => {
+                        fireworks.style.display = 'none';
+                    }, 3000);
+                } else {
+                    document.getElementById('congratulations').innerHTML = `<h2>Спасибо за участие!</h2>
+                    <p>Вы показали хороший результат, но есть над чем поработать. Рекомендуем к просмотру следующие фильмы, чтобы повысить уровень предпринимательского мышления:</p>
+                    <div class="movie-recommendations">
+                        <ul>
+                            <li><strong>«Продавцы боли» (Boiler Room)</strong> — фильм о мире биржевых махинаций и моральных дилеммах.</li>
+                            <li><strong>«Сироп» (Syrup)</strong> — сатирическая драма о маркетинге и креативности.</li>
+                            <li><strong>«Здесь курят» (Thank You for Smoking)</strong> — комедия о PR и искусстве манипуляции.</li>
+                            <li><strong>«99 франков»</strong> — фильм о мире рекламы и последствиях потери контроля.</li>
+                            <li><strong>«Социальная сеть» (The Social Network)</strong> — история создания Facebook и борьба за успех.</li>
+                            <li><strong>«Волк с Уолл-стрит» (The Wolf of Wall Street)</strong> — эпопея о взлете и падении биржевого брокера.</li>
+                        </ul>
+                    </div>`;
+                    document.querySelector('.cta-button').style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
